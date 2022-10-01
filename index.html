@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
+    <title>ROCK PAPER SCISSORS</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="game" id="game">
+
+        </div>
+        <div class="controll" id="controll">
+            <label>Team size</label>
+            <input type="number" id="team" placeholder="team-size" value="1">
+            <button onclick="start()">start</button>
+
+            <label>Rock size: <span id="rocksize"></span> </label>
+            <label>Paper size: <span id="papersize"></span> </label>
+            <label>Scissors size: <span id="scissorssize"></span> </label>
+
+        </div>
+    </div>
+</body>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .container {
+        width: 100vw;    
+        height: 100vh;
+        display: flex;
+    }
+
+    .game {
+        width: 70vw;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .controll {
+        padding: 4%;
+        display: flex;
+        flex-direction: column;
+        gap: 2%;
+        border-left: 1px solid black;
+    }
+</style>
+
+</html>
