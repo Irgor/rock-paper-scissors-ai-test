@@ -72,27 +72,9 @@ function gamef() {
                 mov = Math.abs(mov);
             }
 
-            doMove(o, target, mov)
+            doMove(o, target, mov, danger)
 
-            if (o.x + iS > maxX) {
-                o.x = maxX - iS;
-                o.image.style.left = o.x + 'px';
-            }
-
-            if (o.x < 0) {
-                o.x = 0;
-                o.image.style.left = o.x + 'px';
-            }
-
-            if (o.y + iS > maxY) {
-                o.y = maxY - iS;
-                o.image.style.top = o.y + 'px';
-            }
-
-            if (o.y < 0) {
-                o.y = 0;
-                o.image.style.top = o.y + 'px';
-            }
+            doBoundaries(o);
 
             if (!danger) {
                 if (target.x > (o.x - hitbox) && target.x < (o.x + hitbox)) {
@@ -106,7 +88,29 @@ function gamef() {
     }
 }
 
-function doMove(origin, target, speed) {
+function doBoundaries(o) {
+    if (o.x + iS > maxX) {
+        o.x = maxX - iS;
+        o.image.style.left = o.x + 'px';
+    }
+
+    if (o.x < 0) {
+        o.x = 0;
+        o.image.style.left = o.x + 'px';
+    }
+
+    if (o.y + iS > maxY) {
+        o.y = maxY - iS;
+        o.image.style.top = o.y + 'px';
+    }
+
+    if (o.y < 0) {
+        o.y = 0;
+        o.image.style.top = o.y + 'px';
+    }
+}
+
+function doMove(origin, target, speed, danger) {
     if (target.x > origin.x) {
         origin.x += speed;
         origin.image.style.left = origin.x + 'px';
@@ -125,6 +129,12 @@ function doMove(origin, target, speed) {
     if (target.y < origin.y) {
         origin.y -= speed;
         origin.image.style.top = origin.y + 'px';
+    }
+
+    if (danger) {
+        if (origin.y <= 0 && target.y <= 0 && origin.x <= 0 && target.x > origin.x && speed < 0) {
+            console.log('foi');
+        }
     }
 }
 
